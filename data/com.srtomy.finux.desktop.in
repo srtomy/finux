@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=finux
+Exec=finux
+Terminal=false
+Type=Application
+Categories=GTK;
+StartupNotify=true
