@@ -1,11 +1,17 @@
+finux_test_sources = files(
+  'domain/fluxocaixa.vala',
+)
+
 finux_sources = [
   'main.vala',
   'window.vala',
+  'domain/fluxocaixa.vala',
 ]
 
 finux_deps = [
-  dependency('gio-2.0', version: '>= 2.50'),
-  dependency('gtk+-3.0', version: '>= 3.22'),
+  gee,
+  gio,
+  gtk,
 ]
 
 gnome = import('gnome')
@@ -15,7 +21,7 @@ finux_sources += gnome.compile_resources('finux-resources',
   c_name: 'finux'
 )
 
-executable('finux', finux_sources,
+finux = executable('finux', finux_sources,
   vala_args: '--target-glib=2.50',  dependencies: finux_deps,
   install: true,
 )

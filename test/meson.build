@@ -1,15 +1,17 @@
 
 finux_source_test = [
   'testmain.vala',
-  'testexample.vala',
+  'testcaixa.vala',
   'testcase.vala',
-]
+  finux_test_sources,
+  ]
 
-e = executable('finux',
-  finux_source_test,
-  dependencies: [
-    glib,
-    gee
-  ],
+logic_test = executable(
+  'finux',
+  sources: finux_source_test,
+  dependencies: finux_deps,
+  include_directories: source_root,
+  workdir: '../sr',
 )
-test('name of test', e)
+
+test('Caixa Teste',logic_test)

@@ -1,17 +1,18 @@
-class TestExample : Gee.TestCase {
+class TestCaixa : Gee.TestCase {
 
-  public TestExample() {
+public TestCaixa() {
     // assign a name for this class
-    base("TestExample");
+    base("Caixa Teste");
     // add test methods
-    add_test("test_example", test_example);
+    add_test("Validar Caixa", test_validar_caixa);
    }
 
    public override void set_up () {
      // setup your test
    }
 
-   public void test_example() {
+   public void test_validar_caixa() {
+        Finux.Caixa caixa = new Finux.Caixa();
      assert("teste" == "teste");
    }
 
