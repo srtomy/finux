@@ -7,9 +7,10 @@ project('finux', ['c', 'vala'],
 
 glib = dependency('glib-2.0', version: '>=2.64')
 gee = dependency('gee-0.8')
+gio = dependency('gio-2.0', version: '>= 2.50')
+gtk =  dependency('gtk+-3.0', version: '>= 3.22')
 
 i18n = import('i18n')
-
 
 subdir('data')
 subdir('src')
