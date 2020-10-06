@@ -10,8 +10,7 @@ logic_test = executable(
   'finux',
   sources: finux_source_test,
   dependencies: finux_deps,
-  include_directories: source_root,
   workdir: '../sr',
 )
 
-test('Caixa Teste',logic_test)
+test('Teste Caixa',logic_test)
