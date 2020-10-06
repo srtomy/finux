@@ -1,27 +1,58 @@
 public class Finux.SaldoInicial{
-    public int id;
-    public double valor_previsto;
-    public double valor_realizado;
-    public string competencia;
-    public Caixa caixa;
+    public int id {get; set;}
+    public double valor_previsto {get; set;}
+    public double valor_realizado {get; set;}
+    public string competencia {get; set;}
+    public Caixa caixa {get; set;}
 
 }
 
 public class Finux.Valor{
-    public double previsto;
-    public double realizado;
+    public double previsto {get; set;}
+    public double realizado {get; set;}
 }
 
 public class Finux.Caixa{
-    public int id;
-    public string competencia;
-    public Gee.List<Lancamento> lancamentos = new Gee.ArrayList<Lancamento>();
-    public SaldoInicial saldo_inicial;
+    public int id {get; set;}
+    public string competencia {get; set;}
+    public Gee.List<Lancamento> _lancamentos = new Gee.ArrayList<Lancamento>();
+    public SaldoInicial saldo_inicial {get; set;}
+
+    public Gee.List<Lancamento>  lancamentos {
+        get { return _lancamentos; }
+        set { _lancamentos = value; }
+    }
+
+
+    public bool validar(){
+        if(competencia == null | competencia == "")
+            return false;
+
+        if(saldo_inicial == null)
+            return false;
+
+        foreach(Lancamento lan in _lancamentos){
+            if(lan.validar() == false)
+                return false;
+        }
+
+        return true;
+    }
 }
 
 
 public enum Finux.Fluxo{
-    ENTRADA, SAIDA
+    ENTRADA, SAIDA;
+
+     public string to_string(){
+        switch(this){
+        case ENTRADA :
+            return "Entrada";
+        case SAIDA :
+            return "Saida";
+        }
+        return "";
+    }
 }
 
 
@@ -30,12 +61,22 @@ public class Finux.Conta{
     public string descricao {get; set;}
     public Fluxo fluxo {get; set;}
 
+    public bool validar(){
+        if(descricao == null)
+            return false;
+
+        if (fluxo.to_string() == "")
+            return false;
+
+        return true;
+    }
+
 }
 
 public class Finux.Lancamento{
-    public int id;
-    public Caixa caixa;
-    public Date data { get; set; }
+    public int id {get; set;}
+    public Caixa caixa {get; set;}
+    public DateTime data { get; set; }
     public Conta conta { get; set; }
     public double valor_previsto { get; set; }
     public double valor_realizado { get; set; }
@@ -45,6 +86,12 @@ public class Finux.Lancamento{
             return false;
 
         if(valor_previsto == 0 & valor_realizado == 0)
+            return false;
+
+        if(caixa == null)
+            return false;
+
+        if(conta.validar() == false)
             return false;
 
         return true;
