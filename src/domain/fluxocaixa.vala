@@ -23,6 +23,34 @@ public class Finux.Caixa{
         set { _lancamentos = value; }
     }
 
+    public Valor calcular_total_entrada(){
+        Valor valor = new Valor();
+
+        foreach (Lancamento lan in lancamentos){
+            if(lan.conta.fluxo == Fluxo.ENTRADA){
+                valor.previsto += lan.valor_previsto;
+                valor.realizado += lan.valor_realizado;
+            }
+
+        }
+
+        return valor;
+    }
+
+    public Valor calcular_total_saida(){
+        Valor valor = new Valor();
+
+        foreach (Lancamento lan in lancamentos){
+            if(lan.conta.fluxo == Fluxo.SAIDA){
+                valor.previsto += lan.valor_previsto;
+                valor.realizado += lan.valor_realizado;
+            }
+
+        }
+
+        return valor;
+    }
+
 
     public bool validar(){
         if(competencia == null | competencia == "")
