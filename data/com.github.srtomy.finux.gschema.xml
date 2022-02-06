@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="finux">
+	<schema id="com.github.srtomy.finux" path="/com/github/srtomy/finux/">
+	</schema>
+</schemalist>
