@@ -14,6 +14,13 @@ if desktop_utils.found()
   )
 endif
 
+gnome = import('gnome')
+
+resource_files = files('finux.gresource.xml')
+resources = gnome.compile_resources('com.github.srtomy.finux', resource_files,
+  c_name: 'resources'
+)
+
 appstream_file = i18n.merge_file(
   input: 'com.github.srtomy.finux.appdata.xml.in',
   output: 'com.github.srtomy.finux.appdata.xml',

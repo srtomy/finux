@@ -17,7 +17,7 @@
  */
 
 namespace Finux {
-	[GtkTemplate (ui = "/com/github/srtomy/finux/window.ui")]
+	[GtkTemplate (ui = "/com/github/srtomy/finux/ui/window.ui")]
 	public class Window : Gtk.ApplicationWindow {
 		[GtkChild]
 		Gtk.Label label;
